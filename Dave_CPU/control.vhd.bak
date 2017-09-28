@@ -1,0 +1,48 @@
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity Control is
+port(Opcode : in std_logic_vector(5 downto 0);
+     RegDst, Branch, MemRead, MemtoReg, MemWrite, ALUSrc, RegWrite, Jump : out std_logic;
+     ALUOp : out std_logic_vector(1 downto 0));
+end Control;
+
+architecture behav of Control is
+
+begin
+
+process(Opcode)
+variable reg : std_logic_vector(9 downto 0);
+
+begin
+                
+case Opcode is
+
+when "000000" =>
+reg := "100100010U";
+when "100011" =>
+reg := "010010110U";
+when "101011" =>
+reg := "U10001U00U";
+when "000100" =>
+reg := "U01000U01U";
+when "000010" =>
+reg := "1UUUUUUUU1";
+when others =>
+null;
+end case;
+        
+RegDst <= reg(9);
+ALUSrc <= reg(8);
+ALUOp(1) <= reg(7);
+ALUOp(0) <= reg(6);
+MemRead <= reg(5);
+MemWrite <= reg(4);
+MemtoReg <= reg(3);
+RegWrite <= reg(2);
+Branch <= reg(1);
+Jump <= reg(0);
+        
+end process;
+end behav;

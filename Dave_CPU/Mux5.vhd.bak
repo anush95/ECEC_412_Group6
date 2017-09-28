@@ -1,0 +1,25 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity Mux5 is
+port (	x,y: in std_logic_vector(4 downto 0);
+	sel : in std_logic;
+	z : out std_logic_vector(4 downto 0));
+end Mux5;
+
+architecture beh of Mux5 is
+begin
+process(sel , x,y)
+begin
+case sel is
+	when '0' =>
+	 z <= x; z_L <= not x;
+	when '1' =>
+	 z <= y; z_L <= not y;
+	when others =>
+	 z <= "11111"; z_L <= "11111";
+end case;
+end process;
+end beh;
+
+	
