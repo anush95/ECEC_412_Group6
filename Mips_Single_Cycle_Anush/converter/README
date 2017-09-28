@@ -1,0 +1,8 @@
+Usage:
+Write instructions line by line in a file in the directory (ex. in).
+Create a file were you would like machine code to be written to (ex. out).
+Use the command below to run:
+
+$python3 converter.py in out
+
+Instructions that coud not be converted will have the reason sepcifie in the output.
