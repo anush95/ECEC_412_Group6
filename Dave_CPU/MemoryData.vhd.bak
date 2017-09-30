@@ -47,4 +47,4 @@ memoryContents(j+3)<=Writedata(7 downto 0);
 end if;
 
 end process;
-end beh;
+end behavioral;
