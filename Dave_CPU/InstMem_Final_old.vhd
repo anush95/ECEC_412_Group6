@@ -33,7 +33,7 @@ begin
  
   -- slt $t7, $s5, $s6
   memcontents(8)<= "00000010";
-  memcontents(9)<= "11010101";
+  memcontents(9)<= "10110110";
   memcontents(10)<="01111000";
   memcontents(11)<="00101010";
 
@@ -74,7 +74,7 @@ wait for 0 ns;
 addint := conv_integer(unsigned(Address));
 ReadData <= memcontents(addint)&memcontents(addint+1)&memcontents(addint+2)&memcontents(addint+3);
 end if;   
--- wait on address;       
+wait on address;       
 end process;
 
 end beh;

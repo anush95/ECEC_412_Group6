@@ -20,14 +20,14 @@ variable flag: Boolean := false;
 begin
   if flag = false then
   -- lw $s5, 0($t0)
-  memcontents(0)<="10001110";  
-  memcontents(1)<="10101000";
+  memcontents(0)<="10001101";  
+  memcontents(1)<="00010101";
   memcontents(2)<="00000000";
   memcontents(3)<="00000000";
 
   -- lw $s6, 4($t0)
-  memcontents(4)<="10001110";
-  memcontents(5)<="11001000";
+  memcontents(4)<="10001101";
+  memcontents(5)<="00010110";
   memcontents(6)<="00000000";
   memcontents(7)<="00000100";
  
@@ -74,7 +74,7 @@ wait for 0 ns;
 addint := conv_integer(unsigned(Address));
 ReadData <= memcontents(addint)&memcontents(addint+1)&memcontents(addint+2)&memcontents(addint+3);
 end if;   
--- wait on address;       
+wait on address;       
 end process;
 
 end beh;
