@@ -74,7 +74,7 @@ wait for 0 ns;
 addint := conv_integer(unsigned(Address));
 ReadData <= memcontents(addint)&memcontents(addint+1)&memcontents(addint+2)&memcontents(addint+3);
 end if;   
-wait on address;       
+-- wait on address;       
 end process;
 
 end beh;
