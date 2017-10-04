@@ -8,7 +8,7 @@ port(Address:in std_logic_vector(31 downto 0);
 end InstMemory;
 
 architecture beh of InstMemory is
-type memoryArray is array(0 to 31) of std_logic_vector(7 downto 0);
+type memoryArray is array(0 to 256) of std_logic_vector(7 downto 0);
 signal memContents:memoryArray;
 
 begin
@@ -74,7 +74,7 @@ wait for 0 ns;
 addint := conv_integer(unsigned(Address));
 ReadData <= memcontents(addint)&memcontents(addint+1)&memcontents(addint+2)&memcontents(addint+3);
 end if;   
-wait on address;       
+-- wait on address;       
 end process;
 
 end beh;
