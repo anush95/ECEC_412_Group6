@@ -22,12 +22,12 @@ if flag = FALSE then
   memoryContents(4) <= "00000000";
   memoryContents(5) <= "00000000";
   memoryContents(6) <= "00000000";
-  memoryContents(7) <= "00001001";
+  memoryContents(7) <= "00000100";
   
   memoryContents(8) <= "00000000";
   memoryContents(9) <= "00000000";
   memoryContents(10) <= "00000000";
-  memoryContents(11) <= "00001000";
+  memoryContents(11) <= "00000101";
   
   flag := TRUE;
   

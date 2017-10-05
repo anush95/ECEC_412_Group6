@@ -19,15 +19,15 @@ begin
 
 if flag = FALSE then
   
-  memoryContents(4) <= "00000000";
-  memoryContents(5) <= "00000000";
-  memoryContents(6) <= "00000000";
-  memoryContents(7) <= "00000100";
+  memoryContents(4) <= "11111111";
+  memoryContents(5) <= "11111111";
+  memoryContents(6) <= "11111111";
+  memoryContents(7) <= "11111100";
   
-  memoryContents(8) <= "00000000";
-  memoryContents(9) <= "00000000";
-  memoryContents(10) <= "00000000";
-  memoryContents(11) <= "00000101";
+  memoryContents(8) <= "11111111";
+  memoryContents(9) <= "11111111";
+  memoryContents(10) <= "11111111";
+  memoryContents(11) <= "11111011";
   
   flag := TRUE;
   

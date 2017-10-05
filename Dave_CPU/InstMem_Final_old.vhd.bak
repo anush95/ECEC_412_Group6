@@ -5,7 +5,8 @@ use ieee.std_logic_unsigned.all;
 
 entity InstMemory is
 port(Address:in std_logic_vector(31 downto 0);  
-     ReadData:out std_logic_vector(31 downto 0));
+     ReadData:out std_logic_vector(31 downto 0);
+	ck:in std_logic);
 end InstMemory;
 
 architecture beh of InstMemory is
@@ -45,9 +46,11 @@ signal memContents:memoryArray := (
     X"00000000");
 
 begin
-process
+process(ck)
 begin
-ReadData <= memContents(conv_integer(Address(31 downto 2)));
+if ck='0' and ck'event then
+	ReadData <= memContents(conv_integer(Address(31 downto 2)));
+end if;
 --wait on address;       
 end process;
 
