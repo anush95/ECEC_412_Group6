@@ -14,31 +14,62 @@ begin
     variable temp : std_logic_vector(9 downto 0);
      begin
                 
-       case Opcode is
-        when "000000" =>
-          temp := "100100010U";
-        when "100011" =>
-          temp := "010010110U";
-        when "101011" =>
-          temp := "U10001U00U";
-        when "000100" =>
-          temp := "U01000U01U";
-        when "000010" =>
-          temp := "UUUUUUUUU1";
-        when others =>
-          null;
-        end case;
-        
-	RegDst <= temp(0);
-	ALUSrc <= temp(1);
-	ALUOp(1) <= temp(2);
-	ALUOp(0) <= temp(3);
-	MemRead <= temp(4);
-	MemWrite <= temp(5);
-	MemtoReg <= temp(6);
-	RegWrite <= temp(7);
-	Branch <= temp(8);
-	Jump <= temp(9);
+ 	if Opcode="000000" then --R format
+    		RegDst <= '1';
+    		ALUSrc <= '0';
+    		MemtoReg <= '0';
+    		RegWrite <= '1';
+    		MemRead <= '0';
+    		MemWrite <= '0';
+    		Branch <= '0';
+    		ALUOp(1) <= '1';
+    		ALUOP(0) <= '0';
+    		Jump <= '0';
+  	elsif Opcode="100011" then -- lw
+    		RegDst <= '0';
+    		ALUSrc <= '1';
+    		MemtoReg <= '1';
+    		RegWrite <= '1';
+    		MemRead <= '1';
+    		MemWrite <= '0';
+    		Branch <= '0';
+    		ALUOp(1) <= '0';
+    		ALUOP(0) <= '0';
+    		Jump <= '0';
+  	elsif Opcode="101011" then -- sw
+  		  RegDst <= 'U';
+  		  ALUSrc <= '1';
+  		  MemtoReg <= 'U'; 
+  		  RegWrite <= '0';
+  		  MemRead <= '0';
+  		  MemWrite <= '1';
+  		  Branch <= '0';
+  		  ALUOp(1) <= '0';
+  		  ALUOP(0) <= '0';
+  		  Jump <= '0';
+  	elsif Opcode="000100" then --beq
+  		  RegDst <= 'U';
+  		  ALUSrc <= '0';
+  		  MemtoReg <= 'U';
+  		  RegWrite <= '0';
+  		  MemRead <= '0';
+  		  MemWrite <= '0';
+  		  Branch <= '1';
+  		  ALUOp(1) <= '0';
+  		  ALUOP(0) <= '1';
+  		  Jump <= '0';
+  	elsif Opcode="000010" then
+  		  RegDst <= 'U';
+  		  ALUSrc <= 'U';
+  		  MemtoReg <= 'U';
+  		  RegWrite <= '0';
+  		  MemRead <= '0';
+  		  MemWrite <= '0';
+  		  Branch <= '0';
+  		  ALUOp(1) <= 'U';
+  		  ALUOP(0) <= 'U';
+  		  Jump <= '1';
+	end if;
         
       end process;
     end Behavioral;
