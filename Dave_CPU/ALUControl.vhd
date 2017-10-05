@@ -33,7 +33,7 @@ begin
          when "1010" =>
            Operation <= "0111";
          when others =>
-           null;
+           Operation <= "UUUU";
          end case;
        end if;
        
