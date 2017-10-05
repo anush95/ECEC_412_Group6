@@ -15,7 +15,7 @@ ENTITY Memory is
 		MemWrite, MemRead,ck: in STD_LOGIC;
 		read_data: out STD_LOGIC_VECTOR (31 downto 0)
 	);
-end Memory;
+end memory;
 
 
 architecture behavioral of memory is	  
