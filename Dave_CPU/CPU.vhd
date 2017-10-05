@@ -42,7 +42,8 @@ end component;
 
 component InstMemory is
 port(Address: in std_logic_vector(31 downto 0);
-     ReadData: out std_logic_vector(31 downto 0));
+     ReadData: out std_logic_vector(31 downto 0);
+	ck:in std_logic);
 end component;
 
 component Mux5 is
@@ -107,7 +108,7 @@ signal four: std_logic_vector(31 downto 0) := "00000000000000000000000000000100"
 begin
 
 PC32: PC port map(clk,P,A);
-IM: InstMemory port map(A, Instruction);
+IM: InstMemory port map(A, Instruction, clk);
 Control0: Control port map(Instruction(31 downto 26), RegDst, Branch, MemRead, MemtoReg, MemWrite, ALUSrc, RegWrite, Jump, ALUOp);
 ALUControl0: ALUControl port map(ALUOp, Instruction(5 downto 0), Operation);
 Mux50: MUX5 port map(Instruction(20 downto 16), Instruction(15 downto 11), RegDst, B);
