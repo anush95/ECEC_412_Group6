@@ -9,23 +9,15 @@ port(x:in std_logic_vector(31 downto 0);
 
 
 architecture behave of IR is
-
+signal temp: std_logic_vector(31 downto 0) := X"000000";
 
 begin
-
-P1:process(clk,IRWrite,x)
-variable temp:std_logic_vector(31 downto 0);
-begin
-
-  if clk='0' and clk'event and IRWrite='1' then  
-  temp:=x;
-  end if;
-
-  if clk='0' and clk'event then 
-  y<=temp;
-  end if;
-  
-
-end process P1;
-
-end behave;
+  y <= temp;
+  process(clk)
+  begin
+    if rising_edge(clk) then
+      if IRWrite = '1' then
+        temp <= x;
+      end if;
+    end if;
+end process;
