@@ -19,8 +19,9 @@ begin
 
 if flag = FALSE then
   registerData(0) <= (others => '0');
-  registerData(20) <= "00000000000000000000000000001110";
-  registerData(21) <= "00000000000000000000000000000101";
+  registerData(8) <= "00000000000000000000000000000100";
+  registerData(18) <= "00000000000000000000000000001101";
+  registerData(19) <= "00000000000000000000000000000100";
   flag := TRUE;
 end if;
 
