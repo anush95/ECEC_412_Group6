@@ -8,23 +8,13 @@ port(clk:in std_logic;
 end PC;
 
 architecture behavioral of PC is 
-signal temp: std_logic_vector(31 downto 0) := "00000000000000000000000000000000";
 begin
-
-
-
-	process(clk)
-	variable count : integer := 0;
-	begin
-		if clk='1' and clk'event then
-			--temp <= AddressIn;
-			if count=0 then
-				AddressOut <= (others => '0');
-				count := count + 1;
-			else
-				AddressOut <= AddressIn;
-			end if;
-		end if;
-	end process;
-
+process(clk)
+variable temp: std_logic_vector(31 downto 0) := X"00000000";
+begin
+AddressOut <= temp;
+if falling_edge(clk) then
+  temp := AddressIn;
+end if;
+end process;
 end behavioral;

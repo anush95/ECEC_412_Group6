@@ -30,18 +30,18 @@ begin
 process(clk)
 begin
   if rising_edge(clk) then
-    RegDst_out <= RegDst_in;
-    ALUSrc_out <= ALUSrc_in;
-    Branch_out <= Branch_in;
-    MemRead_out <= MemRead_in;
-    MemWrite_out <= MemWrite_in;
-    RegWrite_out <= RegWrite_in;
-    MemToReg_out <= MemToReg_in;
-    ALUOp_out <= ALUOp_in;
-    Address_out <= Address_in;
-    Instruction_out <= Instruction_in;
-    ReadData1_out <= ReadData1_in;
-    ReadData2_out <= ReadData2_in;
+    RegDst <= RegDst_in;
+    ALUSrc <= ALUSrc_in;
+    Branch <= Branch_in;
+    MemRead <= MemRead_in;
+    MemWrite <= MemWrite_in;
+    RegWrite <= RegWrite_in;
+    MemToReg <= MemToReg_in;
+    ALUOp <= ALUOp_in;
+    Address <= Address_in;
+    Instruction <= Instruction_in;
+    ReadData1 <= ReadData1_in;
+    ReadData2 <= ReadData2_in;
   end if;
 end process;
 end beh;

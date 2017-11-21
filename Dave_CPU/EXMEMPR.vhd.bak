@@ -25,20 +25,20 @@ begin
   WriteReg_out <= WriteReg;
   Address_out <= Address;
   ALURes_out <= ALURes;
-  WriteData_out <- WriteData;
+  WriteData_out <= WriteData;
 process(clk)
 begin
   if rising_edge(clk) then
-    RegWrite_out <= RegWrite;
-    MemToReg_out <= MemToReg;
-    Branch_out <= Branch;
-    MemRead_out <= MemRead;
-    MemWrite_out <= MemWrite;
-    Zero_out <= Zero;
-    WriteReg_out <= WriteReg;
-    Address_out <= Address;
-    ALURes_out <= ALURes;
-    WriteData_out <- WriteData;
+    RegWrite_out <= RegWrite_in;
+    MemToReg_out <= MemToReg_in;
+    Branch_out <= Branch_in;
+    MemRead_out <= MemRead_in;
+    MemWrite_out <= MemWrite_in;
+    Zero_out <= Zero_in;
+    WriteReg_out <= WriteReg_in;
+    Address_out <= Address_in;
+    ALURes_out <= ALURes_in;
+    WriteData_out <= WriteData_in;
   end if;
 end process;
 end beh;

@@ -163,7 +163,7 @@ begin
   -- MEM
   PCSrc <= BranchMEM and ZeroMEM;
   DataMemory: MemoryData port map(WriteDataMEM, ALUResultMEM, MemReadMEM, MemWriteMEM, ReadDataMEM);
-  MEMWBRegister: MEMWBPR port map(clk, MemtoRegMEM, RegWriteMEM, WriteRegisterMEM, ReadDataMEM, ALUResultMEM, MemToRegWB, RegWriteWB, WriteRegisterWB, ReadDataWB, ALUResultWB);
+  MEMWBRegister: MEMWBPR port map(clk, RegWriteMEM, MemtoRegMEM, WriteRegisterMEM, ReadDataMEM, ALUResultMEM, RegWriteWB, MemToRegWB, WriteRegisterWB, ReadDataWB, ALUResultWB);
   -- WB
   Mux32_2: Mux32 port map(ALUResultWB, ReadDataWB, MemtoRegWB, WriteRegisterData);
 end struc;

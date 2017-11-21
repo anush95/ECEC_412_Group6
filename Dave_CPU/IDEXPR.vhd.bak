@@ -38,7 +38,7 @@ begin
     RegWrite_out <= RegWrite_in;
     MemToReg_out <= MemToReg_in;
     ALUOp_out <= ALUOp_in;
-    Addres_out <= Address_in;
+    Address_out <= Address_in;
     Instruction_out <= Instruction_in;
     ReadData1_out <= ReadData1_in;
     ReadData2_out <= ReadData2_in;

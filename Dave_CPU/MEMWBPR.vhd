@@ -23,11 +23,11 @@ begin
 process(clk)
 begin
   if rising_edge(clk) then
-    RegWrite_out <= RegWrite_in;
-    MemToReg_out <= MemToReg_in;
-    WriteReg_out <= WriteReg_in;
-    ReadData_out <= ReadData_in;
-    ALURes_out <= ALURes_in;
+    RegWrite <= RegWrite_in;
+    MemToReg <= MemToReg_in;
+    WriteReg <= WriteReg_in;
+    ReadData <= ReadData_in;
+    ALURes <= ALURes_in;
   end if;
 end process;
 end beh;

@@ -31,9 +31,9 @@ port(x,y: in std_logic_vector(31 downto 0);
 end component;
 
 component IFIDPR is
-port(CLK: in std_logic;
-	LIN, IIN: in std_logic_vector(31 downto 0);
-	LOUT, IOUT: out std_logic_vector(31 downto 0));
+port(clk:in std_logic;
+     AddressIn, InstructionIn:in std_logic_vector(31 downto 0);
+     AddressOut, InstructionOut:out std_logic_vector(31 downto 0));
 end component;
 
 -- ID/EX
