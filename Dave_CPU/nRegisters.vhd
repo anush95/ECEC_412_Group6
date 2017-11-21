@@ -1,7 +1,6 @@
-
 library ieee;
-use ieee.std_logic_1164.all, ieee.std_logic_arith.all;
-
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 entity registers is
   port(RR1,RR2,WR:in std_logic_vector(4 downto 0);
        WD:in std_logic_vector(31 downto 0);
@@ -10,37 +9,49 @@ entity registers is
 end registers;
 
 architecture behavior of registers is
-type DontPlayYourself is array(0 to 31) of std_logic_vector(31 downto 0);
-signal registerData : DontPlayYourself;
+type memArray is array(0 to 31) of std_logic_vector(31 downto 0);
+signal regMem: memArray := (
+  X"00000000", -- 0
+  X"00000000",
+  X"00000000",
+  X"00000000",
+  X"00000000",
+  X"00000000",
+  X"00000000",
+  X"00000000",
+  X"00000000",
+  X"00000004",
+  X"00000004", -- 10
+  X"00000000",
+  X"00000000",
+  X"00000000",
+  X"00000000",
+  X"00000000",
+  X"00000000",
+  X"00000000",
+  X"00000000",
+  X"00000000",
+  X"0000000E", -- 20
+  X"00000005",
+  X"00000008",
+  X"00000003",
+  X"00000000",
+  X"00000000",
+  X"00000000",
+  X"00000000",
+  X"00000000",
+  X"00000000",
+  X"00000000", -- 30
+  X"00000000"
+);
+signal temp: std_logic_vector(31 downto 0) := X"00000000";
 begin
-process(ck)
-variable JustKnow,AnotherOne,WinMore: integer;
-variable flag : boolean := FALSE;
+RD1 <= regMem(to_integer(unsigned(RR1)));
+RD2 <= regMem(to_integer(unsigned(RR2)));
+process(WD, WR, RegWrite)
 begin
-
-if flag = FALSE then
-  registerData(0) <= (others => '0');
-  registerData(8) <= (others => '0');
-  registerData(9)<="00000000000000000000000000000100";
-  registerData(10)<="00000000000000000000000000000100";
-  registerData(20)<="00000000000000000000000000001110";
-  registerData(21)<="00000000000000000000000000000101";
-  registerData(22)<="00000000000000000000000000001000";
-  registerData(23)<="00000000000000000000000000000011";
-
-  flag := TRUE;
-end if;
-
-JustKnow := conv_integer(unsigned(RR1));
-AnotherOne := conv_integer(unsigned(RR2));
-WinMore := conv_integer(unsigned(WR));
-
-if ck = '0' then
-  RD1 <= registerData(JustKnow);
-  RD2 <= registerData(AnotherOne);
-elsif ck = '1' and RegWrite = '1' and winmore /= 0 then
-  registerData(WinMore) <= WD;
-end if;
-
+  if RegWRite = '1' then
+    regMem(to_integer(unsigned(WR))) <= WD;
+  end if;
 end process;
 end behavior;

@@ -97,7 +97,7 @@ end component;
 component MemoryData is
 port(WriteData: in std_logic_vector(31 downto 0);
      Address: in std_logic_vector(31 downto 0);
-     MemRead, MemWrite: in std_logic;
+     clk, MemRead, MemWrite: in std_logic;
      ReadData: out std_logic_vector(31 downto 0));
 end component;
 
@@ -162,7 +162,7 @@ begin
 				       RegWriteMEM, MemtoRegMEM, BranchMEM, MemReadMEM, MemWriteMEM, ZeroMEM, WriteRegisterMEM, AddressMEM, ALUResultMEM, WriteDataMEM);
   -- MEM
   PCSrc <= BranchMEM and ZeroMEM;
-  DataMemory: MemoryData port map(WriteDataMEM, ALUResultMEM, MemReadMEM, MemWriteMEM, ReadDataMEM);
+  DataMemory: MemoryData port map(WriteDataMEM, ALUResultMEM, clk, MemReadMEM, MemWriteMEM, ReadDataMEM);
   MEMWBRegister: MEMWBPR port map(clk, RegWriteMEM, MemtoRegMEM, WriteRegisterMEM, ReadDataMEM, ALUResultMEM, RegWriteWB, MemToRegWB, WriteRegisterWB, ReadDataWB, ALUResultWB);
   -- WB
   Mux32_2: Mux32 port map(ALUResultWB, ReadDataWB, MemtoRegWB, WriteRegisterData);
