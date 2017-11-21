@@ -9,11 +9,11 @@ port(clk, RegWrite_in, MemToReg_in: in std_logic;
 	WriteReg_out: out std_logic_vector(4 downto 0);
 	ReadData_out, ALURes_out: out std_logic_vector(31 downto 0));
 end MEMWBPR;
-
+-- Again not using provided entity due to not matching up nicely with my control
 architecture beh of MEMWBPR is
 signal RegWrite, MemToReg: std_logic := '0';
 signal WriteReg: std_logic_vector(4 downto 0) := "00000";
-signal ReadData, ALURes: std_logic_vector(31 downto 0)) := X"00000000";
+signal ReadData, ALURes: std_logic_vector(31 downto 0) := X"00000000";
 begin
   RegWrite_out <= RegWrite;
   MemToReg_out <= MemToReg;
