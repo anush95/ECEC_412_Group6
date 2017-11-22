@@ -41,7 +41,7 @@ end component;
 component registers is
 port(RR1, RR2, WR: in std_logic_vector(4 downto 0);
      WD: in std_logic_vector(31 downto 0);
-     RegWrite,ck: in std_logic;
+     RegWrite: in std_logic;
      RD1, RD2: out std_logic_vector(31 downto 0));
 end component;
 
@@ -146,7 +146,7 @@ begin
   InstructionMemory: InstMemory port map(PCOut, InstructionIF);
   IFIDRegister: IFIDPR port map(clk, AddressIF, InstructionIF, AddressID, InstructionID);
   -- ID
-  Registers_inst: registers port map(InstructionID(25 downto 21), InstructionID(20 downto 16), WriteRegisterWB, WriteRegisterData, RegWriteWB, clk, ReadDataOneID, ReadDataTwoID);
+  Registers_inst: registers port map(InstructionID(25 downto 21), InstructionID(20 downto 16), WriteRegisterWB, WriteRegisterData, RegWriteWB, ReadDataOneID, ReadDataTwoID);
   Control_inst: Control port map(InstructionID(31 downto 26), RegDstID, BranchID, MemReadID, MemtoRegID, MemWriteID, ALUSrcID, RegWriteID, ALUOpID);  
   IDEXRegister: IDEXPR port map(clk, RegDstID, ALUSrcID, BranchID, MemReadID, MemWriteID, RegWriteID, MemtoRegID, ALUOpID, AddressID, InstructionID, ReadDataOneID, ReadDataTwoID,
 				     RegDstEX, ALUSrcEX, BranchEX, MemReadEX, MemWriteEX, RegWriteEX, MemtoRegEX, ALUOpEX, AddressEX, InstructionEX, ReadDataOneEX, ReadDataTwoEX);
