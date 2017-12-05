@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all, ieee.std_logic_arith.all;
 entity MemoryData is
 port(WriteData:in std_logic_vector(31 downto 0);
      Address:in std_logic_vector(31 downto 0);
-     clk,MemRead,MemWrite:in std_logic;
+     clk, MemRead,MemWrite:in std_logic;
      ReadData:out std_logic_vector(31 downto 0));
 end MemoryData;
 
@@ -19,15 +19,15 @@ begin
 
 if flag = FALSE then
   
-  memoryContents(4) <= "11111111";
-  memoryContents(5) <= "11111111";
-  memoryContents(6) <= "11111111";
-  memoryContents(7) <= "11111100";
-  
-  memoryContents(8) <= "11111111";
-  memoryContents(9) <= "11111111";
-  memoryContents(10) <= "11111111";
-  memoryContents(11) <= "11111011";
+memoryContents(0)<="00000000";
+memoryContents(1)<="00000000";
+memoryContents(2)<="00000000";
+memoryContents(3)<="00000100";
+memoryContents(4)<="00000000";
+memoryContents(5)<="00000000";
+memoryContents(6)<="00000000";
+memoryContents(7)<="00000100";
+
   
   flag := TRUE;
   
